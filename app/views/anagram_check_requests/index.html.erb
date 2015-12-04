@@ -1,0 +1,69 @@
+<%- model_class = AnagramCheckRequest -%>
+<div class="container">
+ <div class="row">
+   <div class="col-md-6 col-md-offset-3">
+     <div class="panel panel-anagram">
+       <div class="panel-body">
+         <div class="row">
+           <div class="col-lg-12 col-md-12 col-sm-12">
+             <h1 class="text-center">Anagram Checker</h1>
+             <%= form_for @anagram_check_request, url: {action: "check"}, :html => { :id => "anagram-form"} do |f| %>
+               <div class="form-group">
+                 <%= f.text_field :text_one, :class => 'form-control', :placeholder => "Enter text here to..."%>
+               </div>
+               <div class="form-group">
+                 <%= f.text_field :text_two, :class => 'form-control', :placeholder => "...check if it's anagram with this text"%>
+               </div>
+               <div class="form-group">
+                 <div class="row">
+                   <div class="col-sm-6 col-sm-offset-3">
+                     <%= f.submit nil, :class => 'form-control btn btn-register', :value => 'Check' %>
+                   </div>
+                 </div>
+               </div>
+             <% end %>
+             <h2 class="text-center">Results</h2>
+             <% if @anagram_check_requests %>
+               <table class="table table-striped">
+                 <thead>
+                   <tr>
+                     <th>Text one</th>
+                     <th>Text two</th>
+                     <th>Is anagram?</th>
+                   </tr>
+                  </thead>
+                  <tbody id="result-list">
+                    <%if @anagram_check_requests.empty? %>
+                        <td id="no-results" colspan="3">There is no past results</td>
+                    <% end %>
+                    <%= render partial: "anagram_check_request", collection: @anagram_check_requests %>
+                  </tbody>
+                </table>
+              <% end %>
+              <p class="copyright">
+                2015 @ <a href="mailto:thiago.senhorinha@gmail.com" target="_blank">Thiago Senhorinha Rose</a> | All rights Reserved.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $("#anagram-form").submit(function(){
+    var dataSet = $(this).serialize();
+    $.ajax({
+        type: "POST",
+        url: "/check",
+        data: dataSet,
+        success: function(data){
+          $('#no-results').remove();
+          $('#result-list').prepend(data)
+          $('#anagram-form')[0].reset();
+        }
+    });
+    return false;
+  });
+</script>

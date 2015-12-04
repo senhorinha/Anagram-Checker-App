@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe AnagramCheckRequestController, :type => :controller do
+RSpec.describe AnagramCheckRequestsController, :type => :controller do
   describe "GET index" do
     it "returns http success" do
       get :index
@@ -11,6 +11,6 @@ RSpec.describe AnagramCheckRequestController, :type => :controller do
        get :index
        expect(response).to render_template("index")
     end
-    
+
   end
 end

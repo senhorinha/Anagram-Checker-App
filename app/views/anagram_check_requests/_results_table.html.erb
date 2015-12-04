@@ -1,0 +1,29 @@
+<% if @anagram_check_requests %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Text one</th>
+        <th>Text two</th>
+        <th>Is anagram?</th>
+      </tr>
+     </thead>
+     <tbody>
+       <%if @anagram_check_requests.empty? %>
+           <td colspan="3">There is no past results</td>
+       <% end %>
+       <% @anagram_check_requests.each do |anagram_check_request| %>
+         <tr>
+           <td><%= anagram_check_request.text_one %></td>
+           <td><%= anagram_check_request.text_two %></td>
+           <td>
+             <% if anagram_check_request.is_anagram %>
+               <div class="is-anagram"></div>
+             <% else %>
+               <div class="is-not-anagram"></div>
+             <% end %>
+           </td>
+         </tr>
+       <% end %>
+     </tbody>
+   </table>
+<% end %>

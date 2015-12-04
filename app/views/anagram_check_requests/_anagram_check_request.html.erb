@@ -1,0 +1,11 @@
+<tr>
+  <td><%= anagram_check_request.text_one %></td>
+  <td><%= anagram_check_request.text_two %></td>
+  <td>
+    <% if anagram_check_request.is_anagram %>
+      <div class="is-anagram"></div>
+    <% else %>
+      <div class="is-not-anagram"></div>
+    <% end %>
+  </td>
+</tr>

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>AnagramChecker</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+  <head>
+    <title>Anagram Checker - Web App</title>
+    <link rel="shortcut icon" type="image/png" href="assets/img/logo.png"/>
+    <%= favicon_link_tag asset_path("favicon.png") %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
 </html>
