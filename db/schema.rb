@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151204014140) do
+ActiveRecord::Schema.define(version: 20151204023504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "anagram_check_requests", force: :cascade do |t|
-    t.string   "textOne"
-    t.string   "textTwo"
+    t.string   "text_one"
+    t.string   "text_two"
     t.boolean  "is_anagram"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
